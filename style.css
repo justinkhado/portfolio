@@ -1,6 +1,10 @@
 :root {
-	--color-primary: #F3D5B5;
+	--color-primary: #FFEDD8;
+	--color-primary-dark: #F3D5B5;
 	--color-secondary: #351d00;
+	--color-secondary-dark: #241400;
+	--color-tertiary: #A47148;
+	--color-tertiary-dark: #8B5E34;
 	--color-accent: #603808;
 	--color-white: #fafafa;
 	--color-black: #0c0c0c;
@@ -27,8 +31,7 @@ body {
 
 /* Shared Styles */
 .section {
-	width: 90%;
-	margin: 0 auto;
+	padding: 3rem;
 }
 
 .section:not(:last-of-type) {
@@ -44,13 +47,31 @@ header {
 
 /* Hero Section */
 .hero-section {
+	position: relative;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	justify-items: center;
 }
 
+.hero__img-container {
+	align-self: center;
+	max-width: 75%;
+	outline: 1rem solid var(--color-accent);
+	outline-offset: 2rem;
+}
+
+.hero__img {
+	width: 100%;
+	filter: sepia(.8);
+	transition: filter .3s;
+}
+
+.hero__img:hover {
+	filter: sepia(0);
+}
+
 .hero__content {
-	margin-top: 12vw;
+	margin: 10vw 0;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Libre Baskerville', serif;
@@ -60,6 +81,7 @@ header {
 	font-size: 3rem;
 	font-weight: 400;
 	margin: 0;
+	animation: fadeInBottom 1s both;
 }
 
 .hero__name {
@@ -71,12 +93,13 @@ header {
 	margin-left: 4rem;
 	margin-top: 1rem;
 	opacity: 0;
-	animation: fadeIn 1.2s ease-in-out forwards;
+	animation: fadeIn .8s .8s ease-in forwards;
 }
 
 .hero__subtitle {
 	margin-top: 8rem;
 	display: flex;
+	animation: fadeInBottom .5s 1.8s ease-out both;
 }
 
 .hero__subtitle-text {
@@ -88,9 +111,7 @@ header {
 .hero__subtitle-cards {
 	margin-left: 2rem;
 	position: relative;
-	opacity: 0;
-	transform: translateY(1rem);
-	animation: fadeInBottom .5s 1.5s ease-out forwards;
+	transform: translateY(-.5rem);
 }
 
 .hero__subtitle-card {
@@ -102,78 +123,76 @@ header {
 	box-shadow: .3rem .3rem .5rem;
 	font-size: 3rem;
 	text-align: center;
-	color: var(--color-secondary);
+	color: var(--color-accent);
 
 	--card-top-distance: .5rem;
 	--card-left-distance: .7rem;
-	--card-raiseY-distance: 2rem;
+	--card-raiseY-distance: 1.5rem;
 	--card-raiseX-distance: 6rem;
-	--card-rotation: 10deg;
+	--card-rotation: 8deg;
 	--card-animation-duration: 4.5s;
+	--card-animation-delay: 4s;
 }
 
 .hero__subtitle-card:first-of-type {
 	top: 0;
 	left: 0;
 	z-index: 10;
-	animation: shuffle-card-1 var(--card-animation-duration) 2.5s infinite;
+	animation: shuffle-card-1 var(--card-animation-duration) var(--card-animation-delay) infinite;
 }
 
 .hero__subtitle-card:nth-of-type(2) {
 	top: var(--card-top-distance);
 	left: var(--card-left-distance);
 	z-index: 9;
-	animation: shuffle-card-2 var(--card-animation-duration) 2.5s infinite;
+	animation: shuffle-card-2 var(--card-animation-duration) var(--card-animation-delay) infinite;
 }
 
 .hero__subtitle-card:nth-of-type(3) {
 	top: calc(var(--card-top-distance) * 2);
 	left: calc(var(--card-left-distance) * 2);
 	z-index: 8;
-	animation: shuffle-card-3 var(--card-animation-duration) 2.5s infinite;
+	animation: shuffle-card-3 var(--card-animation-duration) var(--card-animation-delay) infinite;
 }
 
 .hero__subtitle-card:nth-of-type(4) {
 	top: calc(var(--card-top-distance) * 3);
 	left: calc(var(--card-left-distance) * 3);
 	z-index: 7;
-	animation: shuffle-card-4 var(--card-animation-duration) 2.5s infinite;
+	animation: shuffle-card-4 var(--card-animation-duration) var(--card-animation-delay) infinite;
 }
 
 .contact-button {
 	margin-top: 12rem;
 	align-self: center;
+	animation: fadeInBottom .6s 2.5s both;
 }
 
 .contact-button__button {
 	position: relative;
 	display: block;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 2rem;
+	font-size: 2.2rem;
 	text-decoration: none;
 	color: var(--color-white);
 	letter-spacing: 1px;
-	padding: 1em 1.2em;
+	padding: .8em 1.2em;
 	border-radius: 4rem;
-	background: var(--color-accent);
+	outline: 2px solid var(--color-tertiary);
+	outline-offset: 3px;
+	background: var(--color-tertiary);
 	cursor: pointer;
 	transition: outline-offset .1s, background-color .2s;
 }
 
 .contact-button__button:hover {
-	background: var(--color-secondary);
-	outline: 2px solid var(--color-secondary);
-	outline-offset: .8rem;
+	background: var(--color-tertiary-dark);
+	outline: 2px solid var(--color-tertiary-dark);
+	outline-offset: 1rem;
 }
 
 .contact-button__button:active {
-	outline-offset: .2rem;
-}
-
-.hero__img {
-	align-self: center;
-	padding: 2rem;
-	max-width: 100%;
+	outline-offset: 1px;
 }
 
 /* Animations */
@@ -182,10 +201,12 @@ header {
 }
 
 @keyframes fadeInBottom {
-	to {
-		opacity: 1;
-		transform: translateY(-.5rem);
+	from {
+		opacity: 0;
+		transform: translateY(1.5rem);
 	}
+
+	to { opacity: 1; }
 }
 
 @keyframes shuffle-card-1 {
