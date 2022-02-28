@@ -1,0 +1,344 @@
+:root {
+	--color-primary: #F3D5B5;
+	--color-secondary: #351d00;
+	--color-accent: #603808;
+	--color-white: #fafafa;
+	--color-black: #0c0c0c;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.6rem;
+	font-weight: 400;
+	background: var(--color-primary);
+	margin: 0;
+}
+
+/* Shared Styles */
+.section {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.section:not(:last-of-type) {
+	margin-bottom: 10rem;
+}
+
+/* Navigation Bar */
+header {
+	height: 5rem;
+	background: var(--color-secondary);
+}
+
+
+/* Hero Section */
+.hero-section {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-items: center;
+}
+
+.hero__content {
+	margin-top: 12vw;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Libre Baskerville', serif;
+}
+
+.hero__title {
+	font-size: 3rem;
+	font-weight: 400;
+	margin: 0;
+}
+
+.hero__name {
+	display: block;
+	font-size: 8rem;
+	font-weight: 600;
+	color: var(--color-accent);
+	width: fit-content;
+	margin-left: 4rem;
+	margin-top: 1rem;
+	opacity: 0;
+	animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+.hero__subtitle {
+	margin-top: 8rem;
+	display: flex;
+}
+
+.hero__subtitle-text {
+	margin: 0;
+	font-size: 4rem;
+	flex-shrink: 0;
+}
+
+.hero__subtitle-cards {
+	margin-left: 2rem;
+	position: relative;
+	opacity: 0;
+	transform: translateY(1rem);
+	animation: fadeInBottom .5s 1.5s ease-out forwards;
+}
+
+.hero__subtitle-card {
+	position: absolute;
+	display: inline-block;
+	background: var(--color-white);
+	padding: .2em .5em;
+	width: 18rem;
+	box-shadow: .3rem .3rem .5rem;
+	font-size: 3rem;
+	text-align: center;
+	color: var(--color-secondary);
+
+	--card-top-distance: .5rem;
+	--card-left-distance: .7rem;
+	--card-raiseY-distance: 2rem;
+	--card-raiseX-distance: 6rem;
+	--card-rotation: 10deg;
+	--card-animation-duration: 4.5s;
+}
+
+.hero__subtitle-card:first-of-type {
+	top: 0;
+	left: 0;
+	z-index: 10;
+	animation: shuffle-card-1 var(--card-animation-duration) 2.5s infinite;
+}
+
+.hero__subtitle-card:nth-of-type(2) {
+	top: var(--card-top-distance);
+	left: var(--card-left-distance);
+	z-index: 9;
+	animation: shuffle-card-2 var(--card-animation-duration) 2.5s infinite;
+}
+
+.hero__subtitle-card:nth-of-type(3) {
+	top: calc(var(--card-top-distance) * 2);
+	left: calc(var(--card-left-distance) * 2);
+	z-index: 8;
+	animation: shuffle-card-3 var(--card-animation-duration) 2.5s infinite;
+}
+
+.hero__subtitle-card:nth-of-type(4) {
+	top: calc(var(--card-top-distance) * 3);
+	left: calc(var(--card-left-distance) * 3);
+	z-index: 7;
+	animation: shuffle-card-4 var(--card-animation-duration) 2.5s infinite;
+}
+
+.contact-button {
+	margin-top: 12rem;
+	align-self: center;
+}
+
+.contact-button__button {
+	position: relative;
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 2rem;
+	text-decoration: none;
+	color: var(--color-white);
+	letter-spacing: 1px;
+	padding: 1em 1.2em;
+	border-radius: 4rem;
+	background: var(--color-accent);
+	cursor: pointer;
+	transition: outline-offset .1s, background-color .2s;
+}
+
+.contact-button__button:hover {
+	background: var(--color-secondary);
+	outline: 2px solid var(--color-secondary);
+	outline-offset: .8rem;
+}
+
+.contact-button__button:active {
+	outline-offset: .2rem;
+}
+
+.hero__img {
+	align-self: center;
+	padding: 2rem;
+	max-width: 100%;
+}
+
+/* Animations */
+@keyframes fadeIn {
+	to { opacity: 1; }
+}
+
+@keyframes fadeInBottom {
+	to {
+		opacity: 1;
+		transform: translateY(-.5rem);
+	}
+}
+
+@keyframes shuffle-card-1 {
+	15% {
+		transform:
+			translate(
+				var(--card-raiseX-distance),
+				calc(-100% - var(--card-raiseY-distance)))
+			rotate(var(--card-rotation));
+		z-index: 10;
+	}
+
+	16% { z-index: 5; }
+
+	30% {
+		transform: translate(
+			calc(var(--card-left-distance) * 3),
+			calc(var(--card-top-distance) * 3));
+		z-index: 5;
+	}
+
+	45% {
+		transform: translate(
+			calc(var(--card-left-distance) * 2),
+			calc(var(--card-top-distance) * 2));
+		z-index: 7;
+	}
+
+	60% {
+		transform: translate(
+			var(--card-left-distance),
+			var(--card-top-distance));
+		z-index: 8;
+	}
+
+	75% {
+		transform: translate(0, 0);
+		z-index: 9;
+	}
+}
+
+@keyframes shuffle-card-2 {
+	15% {
+		transform: translate(
+			calc(var(--card-left-distance) * -1),
+			calc(var(--card-top-distance) * -1));
+		z-index: 9;
+	}
+
+	30% {
+		transform:
+			translate(
+				calc(var(--card-raiseX-distance) - var(--card-left-distance)),
+				calc(var(--card-top-distance) * -1 - var(--card-raiseY-distance) - 100% ))
+			rotate(var(--card-rotation));
+		z-index: 10;
+	}
+
+	31% { z-index: 5; }
+
+	45% {
+		transform: translate(
+			calc(var(--card-left-distance) * 2),
+			calc(var(--card-top-distance) * 2));
+		z-index: 5;
+	}
+
+	60% {
+		transform: translate(
+			var(--card-left-distance),
+			var(--card-top-distance));
+		z-index: 7;
+	}
+
+	75% {
+		transform: translate(0, 0);
+		z-index: 8;
+	}
+}
+
+@keyframes shuffle-card-3 {
+	15% {
+		transform: translate(
+			calc(var(--card-left-distance) * -1),
+			calc(var(--card-top-distance) * -1));
+		z-index: 8;
+	}
+
+	30% {
+		transform: translate(
+			calc(var(--card-left-distance) * -2),
+			calc(var(--card-top-distance) * -2));
+		z-index: 9;
+	}
+
+	45% {
+		transform:
+			translate(
+				calc(var(--card-raiseX-distance) - 2 * var(--card-left-distance)),
+				calc(var(--card-top-distance) * -2 - var(--card-raiseY-distance) - 100% ))
+			rotate(var(--card-rotation));
+		z-index: 10;
+	}
+
+	46% { z-index: 5; }
+
+	60% {
+		transform: translate(
+			calc(var(--card-left-distance) * 1),
+			calc(var(--card-top-distance) * 1));
+		z-index: 5;
+	}
+
+	75% {
+		transform: translate(0, 0);
+		z-index: 7;
+	}
+}
+
+@keyframes shuffle-card-4 {
+	15% {
+		transform: translate(
+			calc(var(--card-left-distance) * -1),
+			calc(var(--card-top-distance) * -1));
+		z-index: 7;
+	}
+
+	30% {
+		transform: translate(
+			calc(var(--card-left-distance) * -2),
+			calc(var(--card-top-distance) * -2));
+		z-index: 8;
+	}
+
+	45% {
+		transform: translate(
+			calc(var(--card-left-distance) * -3),
+			calc(var(--card-top-distance) * -3));
+		z-index: 9;
+	}
+
+	60% {
+		transform:
+			translate(
+				calc(var(--card-raiseX-distance) - 3 * var(--card-left-distance)),
+				calc(var(--card-top-distance) * -3 - var(--card-raiseY-distance) - 100% ))
+			rotate(var(--card-rotation));
+	}
+
+	61% { z-index: 5; }
+
+	75% {
+		transform: translate(0rem, 0rem);
+		z-index: 5;
+	}
+}
