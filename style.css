@@ -75,8 +75,43 @@ body {
 /******************************************************************/
 /* Navigation Bar */
 header {
-	height: 5rem;
+	position: sticky;
+	top: 0;
+	height: 6rem;
 	background: var(--color-secondary);
+	z-index: 999;
+}
+
+.nav {
+	height: 100%;
+	margin-right: 5rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 3rem;
+}
+
+.nav__link {
+	position: relative;
+	text-decoration: none;
+	color: var(--color-white);
+	font-size: 1.8rem;
+	display: flex;
+	justify-content: center;
+}
+
+.nav__link::after {
+	content: '';
+	position: absolute;
+	bottom: -.5rem;
+	width: 0;
+	height: .2rem;
+	background: var(--color-white);
+	transition: width .1s;
+}
+
+.nav__link:hover::after {
+	width: 120%;
 }
 
 /******************************************************************/
@@ -308,7 +343,7 @@ header {
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr 1fr;
 	width: 90rem;
-	margin: -10rem auto 0;
+	margin: -5rem auto 0;
 }
 
 .skill {
