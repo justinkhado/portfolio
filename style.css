@@ -66,6 +66,12 @@ body {
 	margin-bottom: 10rem;
 }
 
+@media only screen and (max-width: 950px) {
+	.section:not(:last-of-type) {
+		margin-bottom: 5rem;
+	}
+}
+
 .section__title {
 	font-size: 6rem;
 	padding: 1rem 2rem;
@@ -78,6 +84,13 @@ body {
 	-webkit-background-clip: text;
 	background-size: 100%;
 	transition: background-size .5s;
+}
+
+@media only screen and (max-width: 950px) {
+	.section__title {
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 .section__title:hover {
@@ -299,6 +312,22 @@ header {
 	grid-template-columns: 1fr 1fr;
 }
 
+@media only screen and (max-width: 950px) {
+	.section--about {
+		background-image: linear-gradient(
+			to bottom,
+			var(--color-secondary-dark) 40%,
+			var(--color-tertiary)
+		);
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 5rem;
+		align-items: center;
+	}
+}
+
 .section__title--about {
 	background-image: linear-gradient(
 		115deg,
@@ -321,6 +350,12 @@ header {
 	animation: fadeInLeft .5s .2s both;
 }
 
+@media only screen and (max-width: 950px) {
+	.about__text {
+		margin: 8rem auto 0;
+	}
+}
+
 .about__excerpt {
 	color: var(--color-white);
 	font-size: 2.2rem;
@@ -341,6 +376,12 @@ header {
 @media only screen and (max-width: 1050px) {
 	.about__img-container {
 		justify-self: center;
+	}
+}
+
+@media only screen and (max-width: 950px) {
+	.about__img-container {
+		max-width: 50%;
 	}
 }
 
@@ -368,6 +409,14 @@ header {
 
 /******************************************************************/
 /* Skills */
+
+@media only screen and (max-width: 850px) {
+	.section--skills {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
+
 .section__title--skills {
 	margin-left: auto;
 	background-image: linear-gradient(
@@ -391,8 +440,14 @@ header {
 .skills {
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr 1fr;
-	width: 90rem;
+	width: min(90rem, 100%);
 	margin: -5rem auto 0;
+}
+
+@media only screen and (max-width: 950px) {
+	.skills {
+		margin-top: 5rem;
+	}
 }
 
 .skill {
@@ -411,6 +466,12 @@ header {
 	font-weight: 700;
 	color: var(--color-white);
 	transition: color .3s, transform .3s;
+}
+
+@media only screen and (max-width: 750px) {
+	.skill {
+		aspect-ratio: 1.2 / 1;
+	}
 }
 
 .skill:hover {
@@ -446,6 +507,12 @@ header {
 	transition: transform .3s;
 }
 
+@media only screen and (max-width: 750px) {
+	.skill__img {
+		width: 8rem;
+	}
+}
+
 .skill:hover img {
 	transform: scale(1.2);
 	filter: drop-shadow(.5rem .5rem .6rem var(--color-black));
@@ -458,6 +525,13 @@ header {
 	padding-top: 10rem;
 	padding-bottom: 10rem;
 	overflow: hidden;
+}
+
+@media only screen and (max-width: 950px) {
+	.section--projects {
+		padding-top: 7rem;
+		padding-bottom: 5rem;
+	}
 }
 
 .section__title--projects {
@@ -495,11 +569,29 @@ header {
 	flex-direction: row-reverse;
 }
 
+@media only screen and (max-width: 950px) {
+	.project,
+	.project--alt {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.project--alt {
+		flex-direction: column;
+	}
+}
+
 .project__img-container {
 	position: relative;
 	display: block;
 	width: 55%;
 	z-index: 1;
+}
+
+@media only screen and (max-width: 950px) {
+	.project__img-container {
+		width: 85%;
+	}
 }
 
 .project__img-container::before,
@@ -530,6 +622,36 @@ header {
 
 .project__img-container--alt::after {
 	width: 100%;
+}
+
+@media only screen and (max-width: 950px) {
+	.project__img-container::before {
+		background: var(--color-tertiary-dark);
+		top: 3rem;
+		height: min(80rem, 70vw);
+		width: 200%;
+	}
+
+	.project__img-container::after {
+		background: var(--color-primary-dark);
+		width: 100%;
+	}
+
+	.project__img-container--alt::before {
+		background: var(--color-primary-dark);
+		left: 4rem;
+	}
+
+	.project__img-container--alt::after {
+		background: var(--color-tertiary-dark);
+		left: -4rem;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.project__img-container::before {
+		height: min(75rem, 75vw);
+	}
 }
 
 .project__img-link {
@@ -589,6 +711,17 @@ header {
 	margin: 6rem auto 0;
 	color: var(--color-black);
 	animation: fadeInLeft .5s;
+}
+
+@media only screen and (max-width: 950px) {
+	.project__details {
+		gap: 3rem;
+		width: fit-content;
+	}
+
+	.project__details--alt {
+		margin-top: 0;
+	}
 }
 
 .project__title {
@@ -764,6 +897,12 @@ header {
 .contact__text {
 	font-size: 2rem;
 	color: var(--color-white);
+}
+
+@media only screen and (max-width: 1150px) {
+	.contact__text {
+		font-size: 3rem;
+	}
 }
 
 /******************************************************************/
