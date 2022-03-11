@@ -204,8 +204,10 @@ header {
 	transition: width .1s;
 }
 
-.nav__link:hover::after {
-	width: 120%;
+@media (hover: hover) {
+	.nav__link:hover::after {
+		width: 120%;
+	}
 }
 
 .nav__link--home {
@@ -223,9 +225,11 @@ header {
 	}
 }
 
-.nav__link--home:hover {
-	outline: 2px solid var(--color-black);
-	outline-offset: .8rem;
+@media (hover: hover) {
+	.nav__link--home:hover {
+		outline: 2px solid var(--color-black);
+		outline-offset: .8rem;
+	}
 }
 
 /******************************************************************/
@@ -354,10 +358,12 @@ header {
 	transition: outline-offset .1s, background-color .2s;
 }
 
-.contact-button__button:hover {
-	background: var(--color-tertiary-dark);
-	outline: 2px solid var(--color-tertiary-dark);
-	outline-offset: 1rem;
+@media (hover: hover) {
+	.contact-button__button:hover {
+		background: var(--color-tertiary-dark);
+		outline: 2px solid var(--color-tertiary-dark);
+		outline-offset: 1rem;
+	}
 }
 
 .contact-button__button:active {
@@ -421,7 +427,7 @@ header {
 .about__text {
 	margin-top: 10rem;
 	max-width: 80%;
-	animation: fadeInLeft .5s .2s both;
+	opacity: 0;
 }
 
 @media only screen and (max-width: 950px) {
@@ -477,6 +483,13 @@ header {
 	z-index: -1;
 }
 
+@media only screen and (max-width: 600px) {
+	.about__img-container::after {
+		top: -3rem;
+		right: -3rem;
+	}
+}
+
 .about__img {
 	width: 100%;
 	filter: sepia(.8);
@@ -521,6 +534,7 @@ header {
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr 1fr;
 	width: min(90rem, 100%);
+	min-height: 60vh;
 	margin: -5rem auto 0;
 }
 
@@ -554,6 +568,7 @@ header {
 	font-weight: 700;
 	color: var(--color-white);
 	transition: color .3s, transform .3s;
+	display: none;
 }
 
 @media only screen and (max-width: 750px) {
@@ -583,8 +598,16 @@ header {
 	}
 }
 
-.skill:hover {
-	color: var(--color-accent);
+@media (hover: hover) {
+	.skill:hover {
+		color: var(--color-accent);
+	}
+}
+
+@media (hover: none) {
+	.skill {
+		color: var(--color-accent);
+	}
 }
 
 .skill::after {
@@ -597,9 +620,17 @@ header {
 	transition: inset .4s, transform .4s;
 }
 
-.skill:hover::after {
-	inset: 2rem;
-	transform: rotate(-180deg);
+@media (hover: hover) {
+	.skill:hover::after {
+		inset: 2rem;
+		transform: rotate(-180deg);
+	}
+}
+
+@media (hover: none) {
+	.skill::after {
+		inset: 1rem;
+	}
 }
 
 .skill:first-of-type { grid-column: 3 / span 3; grid-row: 1 / span 2; opacity: 0; animation: fadeIn .5s .2s ease-out forwards; }
@@ -622,9 +653,11 @@ header {
 	}
 }
 
-.skill:hover img {
-	transform: scale(1.2);
-	filter: drop-shadow(.5rem .5rem .6rem var(--color-black));
+@media (hover: hover) {
+	.skill:hover img {
+		transform: scale(1.2);
+		filter: drop-shadow(.5rem .5rem .6rem var(--color-black));
+	}
 }
 
 /******************************************************************/
@@ -836,9 +869,11 @@ header {
 	transition: opacity .3s, filter .3s;
 }
 
-.project__img:hover {
-	filter: blur(3px);
-	opacity: .4;
+@media (hover: hover) {
+	.project__img:hover {
+		filter: blur(3px);
+		opacity: .4;
+	}
 }
 
 .project__img-text {
@@ -853,8 +888,10 @@ header {
 	pointer-events: none;
 }
 
-.project__img-link:hover > .project__img-text {
-	visibility: visible;
+@media (hover: hover) {
+	.project__img-link:hover > .project__img-text {
+		visibility: visible;
+	}
 }
 
 .project__details {
@@ -865,7 +902,7 @@ header {
 	width: 48rem;
 	color: var(--color-white);
 	margin: 0 auto 4rem;
-	animation: fadeInRight .5s;
+	opacity: 0;
 }
 
 .project__details > div {
@@ -875,7 +912,7 @@ header {
 .project__details--alt {
 	margin: 6rem auto 0;
 	color: var(--color-black);
-	animation: fadeInLeft .5s;
+	opacity: 0;
 }
 
 @media only screen and (max-width: 950px) {
@@ -1012,9 +1049,11 @@ header {
 	transition: transform .1s, box-shadow .1s;
 }
 
-.project__link:hover {
-	transform: scale(1.1) translate(.2rem, -.2rem);
-	box-shadow: .3rem -.3rem 0 var(--color-secondary);
+@media (hover: hover) {
+	.project__link:hover {
+		transform: scale(1.1) translate(.2rem, -.2rem);
+		box-shadow: .3rem -.3rem 0 var(--color-secondary);
+	}
 }
 
 .project__link--alt {
@@ -1023,8 +1062,10 @@ header {
 	color: var(--color-white);
 }
 
-.project__link--alt:hover {
-	box-shadow: .3rem -.3rem 0 var(--color-tertiary);
+@media (hover: hover) {
+	.project__link--alt:hover {
+		box-shadow: .3rem -.3rem 0 var(--color-tertiary);
+	}
 }
 
 /******************************************************************/
@@ -1077,11 +1118,14 @@ header {
 	background: var(--color-tertiary-dark);
 	padding: 1em 2em 1em 1em;
 	transition: transform .1s, box-shadow .1s;
+	opacity: 0;
 }
 
-.contact__detail:hover {
-	transform: scale(1.05) translateY(-2px);
-	box-shadow: 0 .5rem 1rem var(--color-black);
+@media (hover: hover) {
+	.contact__detail:hover {
+		transform: scale(1.05) translateY(-2px);
+		box-shadow: 0 .5rem 1rem var(--color-black);
+	}
 }
 
 .contact__detail:active {
@@ -1113,11 +1157,18 @@ header {
 
 /******************************************************************/
 /* Animations */
+
+.fadeIn {
+	animation: fadeIn .7s both;
+}
 @keyframes fadeIn {
 	from { opacity: 0; }
 	to { opacity: 1; }
 }
 
+.fadeInBottom {
+	animation: fadeInBottom .7s both;
+}
 @keyframes fadeInBottom {
 	from {
 		opacity: 0;
@@ -1127,6 +1178,9 @@ header {
 	to { opacity: 1; }
 }
 
+.fadeInLeft {
+	animation: fadeInLeft .7s both;
+}
 @keyframes fadeInLeft {
 	from {
 		opacity: 0;
@@ -1136,6 +1190,9 @@ header {
 	to { opacity: 1; }
 }
 
+.fadeInRight {
+	animation: fadeInRight .7s both;
+}
 @keyframes fadeInRight {
 	from {
 		opacity: 0;
