@@ -7,14 +7,15 @@ const fadeRightObserver = new IntersectionObserver(entries => {
 }, {
   threshold: 0.3
 })
-document.querySelectorAll('.project__details').forEach(projectDetail => {
-  fadeRightObserver.observe(projectDetail)
+document.querySelectorAll('.project__details').forEach((projectDetail, index) => {
+  if (index !== 1) {
+    fadeRightObserver.observe(projectDetail)
+  }
 })
 
 const fadeLeftObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.remove('fadeInRight')
       entry.target.classList.add('fadeInLeft')
     }
   })

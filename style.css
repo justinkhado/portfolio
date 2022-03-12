@@ -534,7 +534,6 @@ header {
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr 1fr;
 	width: min(90rem, 100%);
-	min-height: 60vh;
 	margin: -5rem auto 0;
 }
 
@@ -573,7 +572,7 @@ header {
 
 @media only screen and (max-width: 750px) {
 	.skill {
-		aspect-ratio: 1.2 / 1;
+		aspect-ratio: 1.3 / 1;
 	}
 }
 
